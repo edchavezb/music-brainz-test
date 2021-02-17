@@ -22,12 +22,18 @@ async function getAlbums(bandName){
   for(let i = 0; i < 25; i++){
     console.log(albums[i].title)
   }
+
+  let albumArtCall = await axios.get(`http://coverartarchive.org/release-group/${firstAlbum.id}`)
+
+  let artURL = albumArtCall.data.images.thumbnails.large
+  console.log(artURL)
+
 }
 
 inquirer.prompt([
   {
     type: "input",
-    message: "Enter the name of your favorite band",
+    message: "Enter the name of your favorite artist",
     name: "band"
   },
 ]).then((input) => {
